@@ -33,6 +33,24 @@ Tests normally mock all web requests so tests can be run without needing any cre
 
 Our development group also includes HTTPLog for viewing raw HTTP messages. To enable HTTPLog, use the `CONNECT_VBMS_HTTPLOG=1` environment variable.
 
+
+## Build with Docker
+
+To build and test the gem using Docker (exporting the gem to the 'build' folder):
+
+```bash
+mkdir -p build
+docker build -t vbms-gem .
+docker run --rm -v $(PWD)/build:/tmp/g -it vbms-gem /bin/bash -c "cp /gem/* /tmp/g"
+```
+
+You can install the gem via:
+
+```bash
+gem install build/connect_vbms.gem
+```
+
+
 ## Docs
 
 From the root directory, run:
